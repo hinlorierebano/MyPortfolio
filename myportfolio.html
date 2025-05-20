@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rebaño's Portfolio</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/android-chrome-192x192.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#111111',
+                        light: '#f5f5f5',
+                        gray: '#2d2d2d',
+                        accent: '#3a3a3a',
+                        teal: {
+                            400: '#2dd4bf',
+                            500: '#0d9488',
+                            600: '#0f766e'
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-in-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-teal': 'pulseTeal 4s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        pulseTeal: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.7' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #111111 0%, #2d2d2d 50%, #0f766e 100%);
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #f5f5f5, #2dd4bf);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .card-gradient {
+            background: linear-gradient(145deg, #1e1e1e 0%, #2a2a2a 100%);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .skill-bar {
+            background: linear-gradient(90deg, #0d9488, #2dd4bf);
+        }
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #2dd4bf;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(13, 148, 136, 0.2);
+        }
+        .teal-border {
+            border-color: #0d9488;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #0d9488;
+            border: 3px solid #2dd4bf;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 33px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: #2dd4bf;
+        }
+        .skill-tag {
+            transition: all 0.3s ease;
+        }
+        .skill-tag:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(45, 212, 191, 0.2);
+        }
+    </style>
+</head>
+<body class="font-sans text-light bg-dark min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 gradient-bg bg-opacity-90 backdrop-blur-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold gradient-text animate-pulse-teal">Hinlorie Rebaño</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#experience" class="nav-link">Experience</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+                <button class="md:hidden focus:outline-none text-teal-400">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 gradient-bg opacity-90"></div>
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-20 left-20 w-40 h-40 rounded-full bg-teal-500 filter blur-3xl opacity-30 animate-pulse-teal"></div>
+            <div class="absolute bottom-20 right-20 w-60 h-60 rounded-full bg-teal-400 filter blur-3xl opacity-20 animate-pulse-teal"></div>
+        </div>
+        <div class="container mx-auto px-6 z-10 text-center">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 gradient-text animate-fade-in">Hi, I'm <span class="text-teal-400">Hinlorie</span></h1>
+            <h2 class="text-2xl md:text-3xl mb-8 text-gray-300 animate-fade-in animate-delay-100">Software Developer</h2>
+            <div class="animate-sl-up animate-delay-200">
+                <a href="#projects" class="inline-block px-8 py-3 bg-teal-600 hover:bg-teal-700 rounded-full font-medium transition-all duration-300 mr-4">
+                    View My Work
+                </a>
+                <a href="#contact" class="inline-block px-8 py-3 border-2 border-teal-500 hover:border-teal-400 rounded-full font-medium transition-all duration-300 teal-border">
+                    Contact Me
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-teal-400 hover:text-teal-300">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 text-center gradient-text">About Me</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center">
+                    <div class="relative w-64 h-64 rounded-full overflow-hidden border-4 border-teal-500 animate-float">
+                        <img src="img/hin.jfif" 
+                             alt="Profile" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="md:w-2/3 md:pl-12">
+                    <h3 class="text-2xl font-semibold mb-4 text-teal-400">Who am I?</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        I'm a passionate developer with hands-on experience creating functional digital experiences from my personal projects and actual(internship). 
+                        My expertise spans across front-end developmen, back-end development, and interactive web applications. 
+                        I believe in clean, efficient code and thoughtful design that puts the user first.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-center">
+                            <span class="w-4 h-4 bg-teal-500 rounded-full mr-2"></span>
+                            <span class="text-gray-300">Name: Hinlorie P. Rebaño</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-4 h-4 bg-teal-500 rounded-full mr-2"></span>
+                            <span class="text-gray-300">Email: hinlorie.rebano16@gmail.com</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-4 h-4 bg-teal-500 rounded-full mr-2"></span>
+                            <span class="text-gray-300">Degree: BS in Information Technology</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-4 h-4 bg-teal-500 rounded-full mr-2"></span>
+                            <span class="text-gray-300">From: Philippines, Cebu City</span>
+                        </div>
+                    </div>
+                    <a href="img/Hinlorie Rebaño- Resume.pdf" target="_blank" rel="noopener" class="inline-block px-6 py-2 border border-teal-600 hover:border-teal-400 rounded-full text-sm transition-all duration-300 teal-border">
+                        Download CV
+                    </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-dark">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 text-center gradient-text">My Experience</h2>
+            <div class="relative pl-16 timeline">
+                <!-- Experience 1 -->
+                <div class="relative mb-12 timeline-item">
+                    <div class="card-gradient p-8 rounded-xl">
+                        <div class="flex flex-col md:flex-row justify-between mb-4">
+                            <h3 class="text-xl font-semibold text-teal-400">Front-End Developer</h3>
+                            <span class="text-gray-400 md:text-right">2024 - 2025</span>
+                        </div>
+                        <h4 class="text-gray-300 mb-4">Pixel8 Web Solutions and Consultancy Inc. (Internship)</h4>
+                        <!-- <p class="text-gray-400 mb-4" style="text-indent: 4ch; text-align: justify;">
+                            ✓ Built interactive user interfaces using Vue.js and the Quasar Framework, focusing on
+                            component reusability and responsiveness. Successfully completed 3 projects, which led
+                            to my transition into fullstack development team. 
+                        </p> -->
+                        <p class="text-gray-400 mb-4" style="text-indent: 4ch; text-align: justify;">
+                            ✓ Set up and configured Git and GitLab repositories, ensuring version control and collaborative development practices. 
+                        </p>
+                        <p class="text-gray-400 mb-4" style="text-indent: 4ch; text-align: justify;">
+                            ✓ Built interactive user interfaces using Vue.js and the Quasar Framework, focusing on component reusability and responsiveness.
+                        </p>
+                        <p class="text-gray-400 mb-4" style="text-indent: 4ch; text-align: justify;">
+                            ✓ Integrated Axios for REST API communication to handle real-time data fetching and form submissions.
+                        </p>
+                        <p class="text-gray-400 mb-4" style="text-indent: 4ch; text-align: justify;">
+                            ✓ Developed actual project UI components using mock data from JSON server, simulating real-world scenarios.
+                        </p>
+                        <p class="text-gray-400 mb-4" style="text-indent: 4ch; text-align: justify;">
+                            ✓ Conducted end-to-end testing of project interfaces using Cypress, ensuring functionality and usability.
+                        </p>
+                        <p class="text-gray-400 mb-4" style="text-indent: 4ch; text-align: justify;">
+                            ✓ Collaborated with team members via GitLab using merge requests, issue tracking, and CI pipelines for project integration.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-800 rounded-full text-xs text-teal-300">Vue.js</span>
+                            <span class="px-3 py-1 bg-gray-800 rounded-full text-xs text-teal-300">Quasar</span>
+                            <span class="px-3 py-1 bg-gray-800 rounded-full text-xs text-teal-300">PHP</span>
+                            <span class="px-3 py-1 bg-gray-800 rounded-full text-xs text-teal-300">MySQL</span>
+                            <span class="px-3 py-1 bg-gray-800 rounded-full text-xs text-teal-300">Git</span>
+                            <span class="px-3 py-1 bg-gray-800 rounded-full text-xs text-teal-300">Node.js</span>
+                            <span class="px-3 py-1 bg-gray-800 rounded-full text-xs text-teal-300">JSON server</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 2
+                <div class="relative mb-12 timeline-item">
+                    <div class="card-gradient p-8 rounded-xl">
+                        <div class="flex flex-col md:flex-row justify-between mb-4">
+                            <h3 class="text-xl font-semibold text-teal-400">UI/UX Designer & Developer</h3>
+                            <span class="text-gray-400 md:text-right">2018 - 2021</span>
+                        </div>
+                        <h4 class="text-gray-300 mb-4">Digital Creative Agency</h4>
+                        <p class="text-gray-400 mb-4">
+                            Designed and developed user interfaces for 20+ clients across various industries. Created design systems
+                            and component libraries to ensure consistency. Conducted user research and A/B testing to optimize
+                            conversion rates by up to 35%.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-800 rounded-full text-xs text-teal-300">Figma</span>
+                            <span class="px-3 py-1 bg-gray-800 rounded-full text-xs text-teal-300">Vue.js</span>
+                            <span class="px-3 py-1 bg-gray-800 rounded-full text-xs text-teal-300">Sass</span>
+                            <span class="px-3 py-1 bg-gray-800 rounded-full text-xs text-teal-300">Adobe XD</span>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- Experience 3 -->
+                <!-- <div class="relative timeline-item">
+                    <div class="card-gradient p-8 rounded-xl">
+                        <div class="flex flex-col md:flex-row justify-between mb-4">
+                            <h3 class="text-xl font-semibold text-teal-400">Junior Web Developer</h3>
+                            <span class="text-gray-400 md:text-right">2016 - 2018</span>
+                        </div>
+                        <h4 class="text-gray-300 mb-4">StartUp Ventures</h4>
+                        <p class="text-gray-400 mb-4">
+                            Developed and maintained company websites and internal tools. Collaborated with designers to implement
+                            pixel-perfect UIs. Optimized website performance resulting in 25% faster load times. Assisted in
+                            migrating legacy systems to modern frameworks.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-800 rounded-full text-xs text-teal-300">HTML/CSS</span>
+                            <span class="px-3 py-1 bg-gray-800 rounded-full text-xs text-teal-300">JavaScript</span>
+                            <span class="px-3 py-1 bg-gray-800 rounded-full text-xs text-teal-300">PHP</span>
+                            <span class="px-3 py-1 bg-gray-800 rounded-full text-xs text-teal-300">WordPress</span>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 text-center gradient-text">My Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card card-gradient rounded-xl overflow-hidden transition-all duration-500 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="img/ims.png" 
+                             alt="Project 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-teal-900 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-teal-400">Inventory Management System</h3>
+                        <p class="text-gray-400 mb-4">A digitalized inventory management for school materials in CEC</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-gray-800 rounded-full text-xs text-teal-300">HTML</span>
+                            <span class="px-3 py-1 bg-gray-800 rounded-full text-xs text-teal-300">CSS</span>
+                            <span class="px-3 py-1 bg-gray-800 rounded-full text-xs text-teal-300">JavaScript</span>
+                            <span class="px-3 py-1 bg-gray-800 rounded-full text-xs text-teal-300">PHP</span>
+                            <span class="px-3 py-1 bg-gray-800 rounded-full text-xs text-teal-300">MySQL</span>
+                        </div>
+                        <a href="#" class="text-teal-400 hover:text-teal-300 text-sm font-medium flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card card-gradient rounded-xl overflow-hidden transition-all duration-500 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="img/bookon2.png" 
+                             alt="Project 2" class="w-full h-full object-cover group-huber:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-teal-900 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-teal-400">BookOn application (team project)</h3>
+                        <p class="text-gray-400 mb-4">A mobile application for booking an appointment for specific services. 
+                            Developed responsive frontend components and assisted in backend API integration. 
+                            Played an active role in QA by testing features, prioritizing bugs, and recommending UX improvements.  </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-gray-800 rounded-full text-xs text-teal-300">Figma</span>
+                            <span class="px-3 py-1 bg-gray-800 rounded-full text-xs text-teal-300">Vue.js</span>
+                            <span class="px-3 py-1 bg-gray-800 rounded-full text-xs text-teal-300">Quasar Framework</span>
+                            <span class="px-3 py-1 bg-gray-800 rounded-full text-xs text-teal-300">PHP</span>
+                            <span class="px-3 py-1 bg-gray-800 rounded-full text-xs text-teal-300">MySQL</span>
+                            <span class="px-3 py-1 bg-gray-800 rounded-full text-xs text-teal-300">Insomnia</span>
+                            <span class="px-3 py-1 bg-gray-800 rounded-full text-xs text-teal-300">Axios</span>
+
+
+                        </div>
+                        <a href="#" class="text-teal-400 hover:text-teal-300 text-sm font-medium flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card card-gradient rounded-xl overflow-hidden transition-all duration-500 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="img/todolist.png" 
+                             alt="Project 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-teal-900 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-teal-400">Todo-List</h3>
+                        <p class="text-gray-400 mb-4">A simple todo-list application using vue and quasar</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-gray-800 rounded-full text-xs text-teal-300">Vue.js</span>
+                            <span class="px-3 py-1 bg-gray-800 rounded-full text-xs text-teal-300">Quasar Framework</span>
+                        </div>
+                        <a href="#" class="text-teal-400 hover:text-teal-300 text-sm font-medium flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="text-center mt-12">
+                <a href="#" class="inline-block px-8 py-3 bg-teal-700 hover:bg-teal-600 rounded-full font-medium transition-all duration-300">
+                    View All Projects
+                </a>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-dark">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 text-center gradient-text">My Skills</h2>
+            <div class="card-gradient p-8 rounded-xl">
+                <div class="flex items-center mb-8">
+                    <div class="w-16 h-16 rounded-full bg-teal-900 flex items-center justify-center mr-6 text-teal-400">
+                        <i class="fas fa-code text-3xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-semibold text-teal-400">Technical Expertise</h3>
+                </div>
+                <div class="flex flex-wrap gap-4">
+                    <span class="skill-tag px-5 py-3 bg-gray-800 rounded-lg text-teal-300 flex items-center">
+                        <i class="fab fa-vuejs mr-3 text-green-400 text-xl"></i> Vue.js
+                    </span>
+                    <span class="skill-tag px-5 py-3 bg-gray-800 rounded-lg text-teal-300 flex items-center">
+                        <i class="fas fa-cube mr-3 text-blue-400 text-xl"></i> Quasar
+                    </span>
+                    <span class="skill-tag px-5 py-3 bg-gray-800 rounded-lg text-teal-300 flex items-center">
+                        <i class="fab fa-js-square mr-3 text-yellow-400 text-xl"></i> JavaScript
+                    </span>
+                    <span class="skill-tag px-5 py-3 bg-gray-800 rounded-lg text-teal-300 flex items-center">
+                        <i class="fab fa-node-js mr-3 text-green-500 text-xl"></i> Node.js
+                    </span>
+                    <span class="skill-tag px-5 py-3 bg-gray-800 rounded-lg text-teal-300 flex items-center">
+                        <i class="fab fa-php mr-3 text-purple-500 text-xl"></i> PHP
+                    </span>
+                    <span class="skill-tag px-5 py-3 bg-gray-800 rounded-lg text-teal-300 flex items-center">
+                        <i class="fas fa-database mr-3 text-blue-400 text-xl"></i> MySQL
+                    </span>
+                    <span class="skill-tag px-5 py-3 bg-gray-800 rounded-lg text-teal-300 flex items-center">
+                        <i class="fas fa-plug mr-3 text-indigo-400 text-xl"></i> Insomnia
+                    </span>
+                    <span class="skill-tag px-5 py-3 bg-gray-8 00 rounded-lg text-teal-300 flex items-center">
+                        <i class="fas fa-exchange-alt mr-3 text-green-400 text-xl"></i> REST API
+                    </span>
+                    <span class="skill-tag px-5 py-3 bg-gray-800 rounded-lg text-teal-300 flex items-center">
+                        <i class="fab fa-git-alt mr-3 text-orange-500 text-xl"></i> Git
+                    </span>
+                    <span class="skill-tag px-5 py-3 bg-gray-800 rounded-lg text-teal-300 flex items-center">
+                        <i class="fab fa-css3-alt mr-3 text-blue-400 text-xl"></i> CSS
+                    </span>
+                    <span class="skill-tag px-5 py-3 bg-gray-800 rounded-lg text-teal-300 flex items-center">
+                        <i class="fab fa-html5 mr-3 text-orange-400 text-xl"></i> HTML
+                    </span>
+                    <span class="skill-tag px-5 py-3 bg-gray-800 rounded-lg text-teal-300 flex items-center">
+                        <i class="fab fa-figma mr-3 text-purple-300 text-xl"></i> Figma
+                    </span>
+                </div>
+                <div class="mt-12">
+                    <h4 class="text-xl font-semibold mb-6 text-teal-400">Skill Proficiency</h4>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-300">Frontend Development</span>
+                                <span class="text-teal-400">Advanced</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-2.5">
+                                <div class="skill-bar h-2.5 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-300">Backend Development</span>
+                                <span class="text-teal-400">Intermediate</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-2.5">
+                                <div class="skill-bar h-2.5 rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-300">UI/UX Design</span>
+                                <span class="text-teal-400">Advanced</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-2.5">
+                                <div class="skill-bar h-2.5 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 text-center gradient-text">Get In Touch</h2>
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold mb-6 text-teal-400">Contact Information</h3>
+                    <p class="text-gray-400 mb-8">
+                        Feel free to reach out to me for any questions or opportunities. I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center mr-4 text-teal-400">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-300">Location</h4>
+                                <p class="text-gray-400">Philippines, Cebu City</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center mr-4 text-teal-400">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-300">Email</h4>
+                                <p class="text-gray-400">hinlorie.rebano16@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center mr-4 text-teal-400">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-300">Phone</h4>
+                                <p class="text-gray-400">09310332578</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8 flex space-x-4">
+                        <a href="https://github.com/hinlorierebano/MyPortfolio" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-teal-600 transition-all text-teal-400 hover:text-white">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/hinlorie/" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-teal-600 transition-all text-teal-400 hover:text-white">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-teal-600 transition-all text-teal-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="file:///D:/Portfolio/myportfolio.html?" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-teal-600 transition-all text-teal-400 hover:text-white">
+                            <i class="fab fa-dribbble"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium mb-2 text-gray-300">Your Name</label>
+                                <input style="color: #111111;" type="text" id="name" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-gray-300">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium mb-2 text-gray-300">Your Email</label>
+                                <input style="color: #111111;" type="email" id="email" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-gray-300">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium mb-2 text-gray-300">Subject</label>
+                            <input style="color: #111111;" type="text" id="subject" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-gray-300">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium mb-2 text-gray-300">Message</label>
+                            <textarea style="color: #111111;" id="message" rows="5" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-gray-300"></textarea>
+                        </div>
+                        <button type="submit" class="w-full px-6 py-3 bg-teal-600 hover:bg-teal-500 rounded-lg font-medium transition-all duration-300">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-dark">
+        <div class="container mx-auto px-6 text-center">
+            <!-- <div class="flex justify-center mb-6">
+                <a href="#" class="text-2xl font-bold gradient-text animate-pulse-teal">PORTFOLIO</a>
+            </div> -->
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="https://github.com/hinlorierebano/MyPortfolio" target="_blank" rel="noopener" class="text-gray-400 hover:text-teal-400"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/hinlorie/" target="_blank" rel="noopener" class="text-gray-400 hover:text-teal-400"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.facebook.com/hinlorey" target="_blank" rel="noopener" class="text-gray-400 hover:text-teal-400"><i class="fab fa-facebook"></i></a>
+                <a href="https://mail.google.com/mail/?view=cm&to=hinlorie.rebano16@gmail.com" target="_blank" rel="noopener" class="text-gray-400 hover:text-teal-400"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p class="text-gray-500 text-sm">
+                © 2025 Hinlorie P. Rebaño. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script src="portfolio.js"></script>
+    
+</body>
+</html>

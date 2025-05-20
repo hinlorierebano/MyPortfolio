@@ -1,0 +1,61 @@
+.gradient-bg {
+    background: linear-gradient(135deg, #111111 0%, #2d2d2d 50%, #0f766e 100%);
+}
+.gradient-text {
+    background: linear-gradient(90deg, #f5f5f5, #2dd4bf);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.card-gradient {
+    background: linear-gradient(145deg, #1e1e1e 0%, #2a2a2a 100%);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+.skill-bar {
+    background: linear-gradient(90deg, #0d9488, #2dd4bf);
+}
+.nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #2dd4bf;
+    transition: width 0.3s;
+}
+.nav-link:hover::after {
+    width: 100%;
+}
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(13, 148, 136, 0.2);
+}
+.teal-border {
+    border-color: #0d9488;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -38px;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #0d9488;
+    border: 3px solid #2dd4bf;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 33px;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background: #2dd4bf;
+}
+.skill-tag {
+    transition: all 0.3s ease;
+}
+.skill-tag:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(45, 212, 191, 0.2);
+}
